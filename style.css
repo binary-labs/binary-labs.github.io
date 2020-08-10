@@ -1,0 +1,728 @@
+@import url("titillium.css");
+@import url("opensans.css");
+
+/* GLOBAL*/
+
+*
+{
+  font-family: 'Open Sans';
+}
+
+html
+{
+  scroll-behavior: smooth;
+}
+
+a, a:hover, a:visited
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+body, html
+{
+  padding: 0;
+  margin: 0;
+}
+
+.hidden
+{
+  opacity: 0;
+}
+
+p a, p a:hover
+{
+  display: inline-block;
+  border-bottom: 4px solid black;
+}
+
+address
+{
+  font-style: normal;
+}
+
+/* TOP BAR */
+
+#top-bar
+{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background-color: rgba(255,255,255,1.0);
+  border-bottom: 1px solid #ccc;
+
+  transition: opacity 0.3s;
+  transition-timing-function: ease-out;
+}
+
+#top-bar.hidden
+{
+  transition: opacity 0.75s;
+}
+
+#top-bar.small
+{
+  background-color: rgba(255,255,255,0.95);
+}
+
+
+/* LOGO */
+
+#top-bar #logo
+{
+  width: auto;
+  margin: 5px 0;
+  transition: height 0.1s;
+}
+
+#top-bar.small #logo
+{
+  transition: height 0.25s;
+}
+
+@media (min-width: 861px)
+{
+  #top-bar #logo
+  {
+    display: block;
+    height: 90px;
+  }
+
+  #top-bar.small #logo
+  {
+    height: 70px;
+  }
+}
+
+@media (max-width: 860px)
+{
+  #top-bar #logo, #top-bar.small #logo
+  {
+    float: left;
+    height: 50px;
+  }
+}
+
+/* NAVIGATION */
+
+nav
+{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (min-width: 751px)
+{
+  nav
+  {
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 1300px)
+{
+  nav
+  {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 750px)
+{
+  nav
+  {
+    display: block;
+    overflow: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+/* MENU */
+
+#menu li
+{
+  list-style: none;
+}
+
+@media (min-width: 751px)
+{
+  #menu-launcher
+  {
+    display:none;
+  }
+  #menu
+  {
+    flex-grow: 1;
+    display: flex;
+    justify-content: right;
+    margin: 0;
+    padding: 0;
+  }
+  #menu li
+  {
+    padding: 0 10px;
+  }
+  #menu li a
+  {
+    display: inline-block;
+    padding: 5px 0;
+    color: #555;
+    font-size: 22px;
+    border-bottom: 5px solid transparent;
+  }
+
+  #menu li a:hover
+  {
+    color: #000;
+  }
+
+  #menu li.active a
+  {
+    color: #000;
+    border-bottom-color: #000;
+  }
+}
+
+@media (max-width: 750px)
+{
+  #menu
+  {
+    display: none;
+  }
+  #menu.mobile
+  {
+    display: block;
+    padding-left: 5px;
+    clear: both;
+    width: 100%;
+    padding-top: 5px;
+  }
+  #menu.mobile li
+  {
+    display: block;
+    padding: 5px 0;
+  }
+  #menu.mobile li a, #menu.mobile li a.active, #menu.mobile li a:hover
+  {
+    color: #000;
+  }
+
+  #menu-launcher
+  {
+    flex-grow: 1;
+    float: right;
+    display: block;
+    text-align: right;
+  }
+  #menu-launcher #hamburger
+  {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-top: 15px;
+    background-image: url("hamburger.svg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: transparent;
+  }
+}
+
+/* Big Picture */
+
+#start
+{
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-image: url("images/desk.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media (min-width: 1301px)
+{
+  #start
+  {
+    height: 700px;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1300px)
+{
+  #start
+  {
+    height: 500px;
+  }
+}
+
+@media (max-width: 860px)
+{
+  #start
+  {
+    height: 300px;
+    background-image: url("images/desk_mobile.jpg");
+  }
+}
+
+/* CIRCLE LOGO */
+
+#circle
+{
+    position: fixed;
+    z-index: 2;
+    border-radius: 50%;
+    background-color: rgba(255.0,255.0,255.0,0.95);
+    transition: opacity 1s;
+    transition-delay: 0.5s;
+    transition-timing-function: ease-out;
+}
+#circle.hidden
+{
+  transition: opacity 0.5s;
+}
+
+#circle img
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 70%;
+  height: auto;
+}
+
+/* fix circle overlapping text */
+section:not(:first-of-type)
+{
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1301px)
+{
+  #circle
+  {
+    width: 700px;
+    height: 700px;
+    top: 110px;
+    right: 15%;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1300px)
+{
+  #circle
+  {
+    width: 450px;
+    height: 450px;
+    top: 130px;
+    right: 10%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 860px)
+{
+  #circle
+  {
+    width: 300px;
+    height: 300px;
+    top: 50px;
+    right: 10%;
+  }
+}
+@media (max-width: 500px)
+{
+  #circle
+  {
+    width: 200px;
+    height: 200px;
+    top: 50px;
+    left: 50%;
+    margin-left: -100px;
+  }
+}
+
+
+/* SECTIONS */
+
+
+section
+{
+  overflow: auto;
+  font-weight: 500;
+  border-bottom: 1px solid #ccc;
+}
+section.centered
+{
+  text-align: center;
+}
+section>header
+{
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+@media (min-width: 1301px)
+{
+  section
+  {
+    font-size: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 50px;
+    /* compensate anchor position with fixed menu */
+    padding-top: calc(90px + 50px);
+    margin-top:-90px;
+  }
+  section.centered
+  {
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size:35px;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1300px)
+{
+  section
+  {
+    font-size: 25px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 50px;
+    /* compensate anchor position with fixed menu */
+    padding-top: calc(90px + 50px);
+    margin-top:-90px;
+  }
+  section.centered
+  {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 860px)
+{
+  section
+  {
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    /* compensate anchor position with fixed menu */
+    padding-top: calc(71px + 40px);
+    margin-top:-71px;
+  }
+  section.centered
+  {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 23px;
+  }
+  section>header
+  {
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+/* PROJECTS */
+
+#projects
+{
+  margin-left: auto;
+  margin-right: auto;
+
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(auto-fit, 302px);
+}
+
+#projects>.project
+{
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#projects>.project>header
+{
+  align-self: center;
+  flex-grow: 1;
+
+  padding: 15px 15px;
+
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#projects>.project.full
+{
+  border: none;
+
+  height: 100%;
+  display: block;
+}
+
+#projects>.project.full>header
+{
+  display: inline-block;
+  text-align: left;
+
+  /* when there are not at least 2 tiles space for the heading, flow under the picture */
+  width: calc(2 * 300px + 40px);
+  padding: 0;
+
+  font-size: 27px;
+  font-weight: bold;
+  /* Align top line of font with top border of container */
+  margin-top: -7px;
+}
+
+#projects>.project>img
+{
+  float: none;
+  margin: 0;
+
+  cursor: pointer;
+}
+
+#projects>.project.full>img
+{
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+#projects>.project>.content
+{
+  /* this is how fade in/out with hidden content needs to be done */
+  position:absolute;
+  opacity: 0;
+  /* fade out immediately */
+  transition: opacity 0s;
+  /* make sure invisible object is below other objects */
+  z-index: -1;
+}
+
+#projects>.project.full>.content
+{
+  /* this is how fade in/out with hidden content needs to be done */
+  position: static;
+  opacity: 1;
+  transition: opacity 0.7s linear 0.2s;
+}
+
+/* Fixed number of projects per column; centered as a whole */
+@media (min-width: 1650px)
+{
+  #projects
+  {
+    width: calc(4 * 302px + 3 * 40px);
+  }
+  #projects>.project.full
+  {
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 1090px) and (max-width: 1649px)
+{
+  #projects
+  {
+    width: calc(3 * 302px + 2 * 40px);
+  }
+  #projects>.project.full
+  {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 731px) and (max-width: 1300px)
+{
+  #projects
+  {
+    width: calc(2 * 302px + 1 * 40px);
+  }
+  #projects>.project.full
+  {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 730px)
+{
+  #projects
+  {
+    width: calc(1 * 302px);
+  }
+  #projects>.project.full
+  {
+    grid-column: span 1;
+  }
+  #projects>.project.full header
+  {
+    /* Remove negative shift because heading is below the picture and doesn't need to be aligned*/
+    margin-top: 0px;
+  }
+
+  section#prior-work
+  {
+    text-align: center;
+  }
+}
+
+#show_all
+{
+  display: none;
+
+  padding: 5px 10px;
+  border: 1px solid #555;
+  cursor: pointer;
+
+  /* fix overlapping with negativ anchor-margin */
+  margin: 40px 0;
+}
+
+@media (max-width: 731px)
+{
+  #show_all
+  {
+    width: auto;
+    /* Trick to center with width auto */
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #show_all.hidden
+  {
+    display: none;
+  }
+  #projects > .project.optional
+  {
+    display: none;
+  }
+}
+
+/* Persons */
+
+#persons
+{
+  margin-top: 40px;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1800px)
+{
+  #persons
+  {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.person>.description
+{
+    font-size: 0.9em;
+}
+
+@media (max-width: 1300px)
+{
+  .person>.description
+  {
+      font-size: 1em;
+  }
+}
+
+.person>.description>header
+{
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 0.75em;
+  margin-top: 10px;
+}
+
+.person>.description>p
+{
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
+.person > img
+{
+  float: left;
+  height: 360px;
+  width: 300px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 861px)
+{
+  .person>img
+  {
+    height: 288px;
+    width: 240px;
+    margin-right: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Footer */
+
+@media (min-width: 1301px)
+{
+  #footer img.icon-social
+  {
+      width: 45px;
+  }
+}
+@media (min-width: 861px) and (max-width: 1300px)
+{
+  #footer img.icon-social
+  {
+      width: 38px;
+  }
+}
+@media (max-width: 860px)
+{
+  #footer img.icon-social
+  {
+      width: 35px;
+  }
+  #footer
+  {
+      text-align: center;
+  }
+}
+
+#footer img.icon-social
+{
+  opacity: 0.5;
+}
+
+#footer img.icon-social:hover, #footer img.icon-social:active
+{
+  opacity: 1;
+}

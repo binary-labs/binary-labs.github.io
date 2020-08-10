@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- Start Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- End Favicons -->
+    <meta name="description" content="We offer development services for embedded systems from prototype to serial production">
+    <meta name="viewport" content="width=320, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <title>Binary Labs - Hardware and Software for Embedded Systems</title>
+  </head>
+  <body>
+    <div id="top-bar" class="small hidden">
+      <nav>
+        <a href="#start">
+          <img src="logo.svg" id="logo"/>
+        </a>
+        <div id="menu-launcher">
+          <div id="hamburger">
+          </div>
+        </div>
+        <ul id="menu">
+          <li><a href="#summary">What</a></li>
+          <li><a href="#prior-work">Projects</a></li>
+          <li><a href="#philosophy">How</a></li>
+          <li><a href="#team">Who</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="circle" class="hidden">
+      <img src="logo.svg">
+    </div>
+
+    <section id="start">
+    </section>
+
+    <section id="summary" class="centered">
+      <header>We develop hardware and software for embedded systems.</header>
+      <p>Based on our experience in the field of audio electronics and digital signal processing we offer development services for embedded systems from prototype to serial production.</p>
+    </section>
+
+    <section id="prior-work">
+      <header>Projects</header>
+      <p>
+        We have contributed to the development of these devices:
+      </p>
+      <div id="projects">
+        <div class="project small">
+          <img src="images/vibrations_cut.jpg">
+          <header>Vibrations</header>
+          <div class="content">
+            <p>
+              <a href="https://www.moritzsimongeist.com/works/vibrations">Vibrations</a> is a distributed robotic vibraphone by Moritz Simon Geist.
+            </p>
+            <p>
+              The installation consists of up to 36 tone plates connected to a central unit.
+              Each tone plate is equipped with a mallet driven by a solenoid.
+              A damper actuated by a stepper motor allows for sustained and non-sustained play modes.
+              A piezo pickup senses the vibrations of the tone plate.
+              Each plate is completed with electronics, digitizing the output signal of the piezo and controlling the mechanics.
+            </p>
+            <p>
+              For Communication the tone plates and the central units are connected in chains of up to 12 tone plates (heads) via regular ethernet cables.
+              The four twisted pairs are used to exchange control data between the heads and the central unit, stream audio from the heads to the central unit as well as provide logic level power to the heads.
+              The actuators on each tone plate are powered through a separate chaining system.
+            </p>
+            <p>
+              The central unit takes midi data for playing and configuring the instrument and provides analog audio outputs with mixed down signals from all connected heads.
+            </p>
+            <p>
+              We were responsible for hardware and firmware development.
+              The central challenge of this project was the design of the high speed bus for streaming audio data between the heads and the central unit.
+              We solved this with impedance controlled PCB design and by implementing a serial protocol synchronized by the central unit.
+              The synchronization was also used to drive the resampling necessary due to the separated audio clock domains of heads and central unit.
+            </p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/roseguarden_cut.jpg">
+          <header>Roseguarden</header>
+          <div class="content">
+            <p>
+              Roseguarden is an open source access management system for shared spaces.
+              It is developed at <a href="https://konglomerat.org/">Konglomerat e.V.</a>
+              and currently in use to provide access to users of the fablab in <a href="https://konglomerat.org/rosenwerk.html">#Rosenwerk</a>. 
+            </p>
+            <p>
+              The system consists of a <a href="https://github.com/konglomerat/roseguarden">self-hosted backend server</a> and multiple door nodes connected to it via internet or local area network.
+              Each door node physically controls the access to one door and allows users to identify themselves via RFID tags.
+            </p>
+            <p>
+              Our role in the project was to develop the <a href="https://github.com/konglomerat/roseguarden.hardware">firmware for a proof-of-concept door node</a> on an ESP32 based platform.
+            </p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/midilooper_cut.jpg">
+          <header>Midilooper</header>
+          <div class="content">
+            <p>
+              Midilooper is a performative loop station that operates on MIDI messages.
+              In contrast to looping in the audio domain where a lot of musical information has already been merged,
+              this approach provides musicians with more flexibility to morph their loops.
+              This way midilooper is crossing the gap between looping and sequencing.
+            </p>
+            <p>
+              For this device, we developed two special input circuits.
+              One is a control voltage input that can be reconfigured through software into an interface for a passive pedal switch.
+              The other one is a standard compliant MIDI TRS input that can also be used as a modular level clock input.
+            </p>
+            <p>
+              The firmware was developed completely by us.
+              Its core feature is a storage structure for MIDI information that allows fast read and write access,
+              arbitrary track lengths and flexible distribution of storage capacity between tracks.
+              Additionally, it can be serialized to non-volatile memory allowing for fast and seamless switching between banks.
+            </p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/thyme_cut.jpg">
+          <header>Thyme Effects Processor</header>
+          <div class="content">
+            <p>Thyme is an experimental delay-based effects processor.</p>
+            <p>As the instrument focuses on the exploration of the space inbetween classical delay based audio effects, we had to develop a signal processing chain that is both flexible to control and efficient in terms of processing power.</p>
+            <p>Next to firmware development, we supported hardware development and created a semi-automatic testing rig for production.</p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/komplex_cut.jpg">
+          <header>Komplex Sequencer</header>
+          <div class="content">
+            <p>A quad hardware sequencer controlling synthesizers via CV/Gate and MIDI signals.</p>
+            <p>Being employed at KOMA Elektronik, Robert was responsible for firmware development. He was challenged by allowing near endless possibilities of CV-control while not compromising on timing precision.</p>
+            <p>To achieve a high precision voltage output without extending production times, he developed an automated calibration routine.</p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/toc_one_cut.jpg">
+          <header>Toc-One</header>
+          <div class="content">
+            <p>Toc-One a is toolbox for generating electro-acoustic music that we developed together with robotic music artist <a href="http://sonicrobots.com">Sonic Robots</a>. It consists of multiple beater heads that can be controlled through MIDI messages.</p>
+            <p>To be usable live on stage, the beaters needed to be relatively powerful while being connected to the central control unit only through long standard XLR microphone cables.</p>
+            <p>We contributed to the project in terms of circuit design and firmware development.</p>
+          </div>
+        </div>
+        <div class="project small">
+          <img src="images/strom_cut.jpg">
+          <header>Strom Power Supply</header>
+          <div class="content">
+            <p>Strom is a series of modules for powering eurorack modular synthesizers.</p>
+            <p>The main goal of the development process was to design an affordable power solution while not compromising on safety measures and the quality of the provided output voltages.</p>
+            <p>Being a development engineer at KOMA Elektronik, Robert designed the circuits as well as the PCBs and built custom test equipment to aid the development process and help quality control in production.</p>
+          </div>
+        </div>
+        <div class="project small optional">
+          <img src="images/strom_mobile_cut.jpg">
+          <header>Strom Mobile</header>
+          <div class="content">
+            <p>The Strom Mobile is a voltage converter made for powering electronic instruments using common USB power banks.</p>
+            <p>As the quality of power bank output voltages can differ drastically, we put a lot of effort into providing a clean output voltage under all load conditions.</p>
+            <p>Next to the ciruitry and PCB of the product itself, Robert, in his position as an engineer at KOMA Elektronik, developed a test rig to speed up quality control.</p>
+          </div>
+        </div>
+        <div class="project small optional">
+          <img src="images/field_kit_cut.jpg">
+          <header>Field Kit</header>
+          <div class="content">
+            <p>The Field Kit is an experimental tool for making music with everyday objects.</p>
+            <p>As an engineer at KOMA Elektronik, Robert undertook development of the signal interface which transforms sensor data into gate and CV signals. With the intention of animating people new to electronics to play with a variety of sensors, he put a strong focus on hardening the circuitry against accidental misconfiguration.</p>
+            <p>Additionally, he developed software and hardware to automate parts of production and quality control.</p>
+          </div>
+        </div>
+        <div class="project small optional">
+          <img src="images/field_kit_fx_cut.jpg">
+          <header>Field Kit FX</header>
+          <div class="content">
+            <p>The Field Kit FX is an CV-controllable multi-effect unit.</p>
+            <p>While developing the firmware and circuitry for digital audio effects and analog signal routing as well as the internal power supply as an engineer at KOMA Elektronik, Robert put a lot of effort into maintaining signal quality in a highly integrated mixed signal application.</p>
+          </div>
+        </div>
+        <div class="project small optional">
+          <img src="images/field_kit_sensors_cut.jpg">
+          <header>Field Kit Sensors</header>
+          <div class="content">
+            <p>The Field Kit Sensors are an extension to the Field Kit, enabling the use of environmental signals within the process of sound design.</p>
+            <p>Being used by people unfamiliar with electronics, the raw data from different types of sensors has to be preprocessed to expose a common interface and the circuits had to be hardened against accidental misuse.</p>
+            <p>Robert, being an development engineer at KOMA Elektronik, was responsible for the circuit and PCB design as well as firmware development.</p>
+          </div>
+        </div>
+        <div class="project small optional">
+          <img src="images/case_cut.jpg">
+          <header>Modular Case</header>
+          <div class="content">
+            <p>A case for eurorack modular synthesizers.</p>
+            <p>Being employed at KOMA Elektronik, Robert designed the case to be a modular system in itself and to keep production costs as low as possible, while not compromising on material selection.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="button" id="show_all">Show All</div>
+
+    </section>
+
+    <section id="philosophy">
+      <header>Philosophy</header>
+      <p>
+        Having both a background in engineering and experience in developing devices for artistic and creative purposes,
+        our goal is to <b>explore new ways of leveraging the power of technology</b> without compromising well-proven engineering guidelines.
+      </p>
+      <p>
+        We transform your idea into a proof of concept that is further evolved through an <b>iterative, feedback-driven process</b> into a finished product ready to be produced and tested efficiently.
+      </p>
+      <p>
+        We strive to adapt <b>state-of-the-art techniques from software engineering</b> to the world of embedded software
+        to produce quick and reliable results.
+      </p>
+      <p>
+        We use <b>rapid prototyping technologies</b> to allow testing of devices in their future environment at an early stage of development.
+      </p>
+      <p>
+        We rely almost entirely on <b>open-source</b> software tools and deliver our work in open file formats
+        that do not force you to use expensive tools or lock you to a specific operating system.
+      </p>
+    </section>
+
+    <section id="team">
+    <header>Team</header>
+    <div id="persons">
+      <div class="person">
+        <img src="images/lennart.jpg"/>
+        <div class="description">
+          <header>Lennart Schierling</header>
+          <p>Lennart's main focus is firmware development, system design and process automation.</p>
+          <p>He holds a diploma in electrical engineering from TU Dresden.</p>
+        </div>
+      </div>
+      <div class="person">
+        <img src="images/robert.jpg"/>
+        <div class="description">
+          <header>Robert Kunz</header>
+          <p>Robert specializes in circuit design, PCB design and production planning.</p>
+          <p>He holds a diploma in electrical engineering from TU Dresden.</p>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section id="contact">
+      <header>Contact</header>
+      <p>
+        <address>
+      Kunz & Schierling Ingenieursdienstleistungen GbR<br>
+      Großenhainer Straße 99<br>
+      01127 Dresden<br>
+      Germany
+        </address>
+      </p>
+      <p>
+        <a href="mailto:hello@binarylabs.dev">hello@binarylabs.dev</a>
+      </p>
+    </section>
+    <section id="footer">
+      <a href="https://www.instagram.com/binarylabs.dev/"><img src="icon_instagram.svg" class="icon-social"></a>
+    </section>
+
+  </body>
+  <script src="script.js"></script>
+</html>
